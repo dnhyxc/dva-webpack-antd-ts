@@ -1,0 +1,34 @@
+@import '~../app.less';
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    height: calc(100% - 45px);
+
+    .wingBlank {
+      height: 35px;
+      padding: 13px 20px;
+    }
+
+    .segmentedControl {
+      height: 100%;
+    }
+
+    .listContent {
+      overflow: auto;
+
+      .list {
+
+        .item {
+          height: 60px;
+        }
+      }
+    }
+  }
+}
