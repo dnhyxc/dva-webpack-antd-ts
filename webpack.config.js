@@ -3,8 +3,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
+// true 为开发模式，false 为生产模式
 const devMode = process.env.NODE_ENV !== 'production'
 const matchSVGSprite = /assets\/icons\/|components\/Base\/Icon\/icons\//;
+const { ESLINT_LOADER_DISABLED, IS_REAL_PROD } = process.env; // 通过环境变量禁用 eslint-loader
 
 module.exports = {
   entry: "./src/index.ts",
@@ -26,6 +28,15 @@ module.exports = {
 
   module: {
     rules: [
+      devMode && !ESLINT_LOADER_DISABLED ? {
+        enforce: 'pre',
+        test: /\.jsx?|\.tsx?$/,
+        include: path.resolve(__dirname, 'src'),
+        loader: 'eslint-loader',
+        options: {
+          cache: true,
+        },
+      } : {},
       {
         test: /\.(js|jsx|ts|tsx)$/,
         use: [
@@ -146,7 +157,7 @@ module.exports = {
     // "react-dom": "ReactDOM"
   },
   devServer: {
-    port: 8000,
+    port: 8080,
     host: 'localhost',
     // open: true,
     disableHostCheck: true,

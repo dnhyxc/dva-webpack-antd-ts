@@ -30,7 +30,6 @@
 // }
 
 import fetch from 'dva/fetch';
-import { routerRedux } from 'dva/router';
 import store from '@/index';
 
 function checkStatus(response) {
