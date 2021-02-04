@@ -1,4 +1,3 @@
-
 import { Toast } from 'antd-mobile';
 import fetch from 'isomorphic-fetch';
 import * as Sentry from '@sentry/browser';
@@ -49,7 +48,6 @@ function addTimestamp(url: string): string {
 function parseJSON(response: Response) {
   return response.json();
 }
-
 
 /**
  * Requests a URL, returning a promise.

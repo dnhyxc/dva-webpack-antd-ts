@@ -8,13 +8,13 @@ import {
 } from './types';
 
 interface ProjectParams {
-  id: number | null,
-  desc: string,
-  checked: boolean,
+  id: number | null;
+  desc: string;
+  checked: boolean;
 }
 
 export type IProjectModelState = {
-  selectedProject: ProjectParams[],
+  selectedProject: ProjectParams[];
   name: string;
 }
 
@@ -36,15 +36,15 @@ const projectModel: Model<IProjectModelState, GlobalState, IReducersPayloads, IE
   namespace: 'project',
   state: {
     selectedProject: [],
-    name: 'dnhyxc'
+    name: 'dnhyxc',
   },
   reducers: {
     save(state, { payload }) {
       return { ...state, ...payload };
     },
     updateSelectedProject(state, { payload }) {
-      return { ...state, ...payload }
-    }
+      return { ...state, ...payload };
+    },
   },
   effects: {
     *getProjectedList({ payload }, { call, put }) {

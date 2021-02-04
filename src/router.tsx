@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Route, Switch, Redirect, routerRedux } from 'dva/router';
+import {
+  Route, Switch, Redirect, routerRedux,
+} from 'dva/router';
 import dynamic from 'dva/dynamic';
 import { RoutesConfig } from '@/config/routers';
 import App from './routes/app';
@@ -23,7 +25,7 @@ const Routers: React.FC<IRoutersProps> = ({ history, app }) => {
           {
             RoutesConfig.map(({ path, exact, ...dynamics }: any, key) => (
               <Route
-                key={key}
+                key={key as number}
                 exact={exact !== false}
                 path={path}
                 component={dynamic({
@@ -37,7 +39,7 @@ const Routers: React.FC<IRoutersProps> = ({ history, app }) => {
       </App>
     </ConnectedRouter>
   );
-}
+};
 
 Routers.propTypes = {
   history: PropTypes.object,

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Icon, NavBar } from 'antd-mobile';
-import './index.less';
 import styles from './index.less';
 
 interface IProps {
@@ -10,7 +9,7 @@ interface IProps {
 }
 
 const MNavBar: React.FC<IProps> = ({
-  onLeftClick, content, rightContent
+  onLeftClick, content, rightContent,
 }) => {
   return (
     <div className={styles.navbar}>
@@ -18,15 +17,15 @@ const MNavBar: React.FC<IProps> = ({
         mode="light"
         leftContent={[
           <Icon key={1} type="left" />,
-          <span key={2}>返回</span>
+          <span key={2}>返回</span>,
         ]}
         onLeftClick={onLeftClick && onLeftClick}
         rightContent={rightContent && rightContent}
       >
         {content}
-      </NavBar >
+      </NavBar>
     </div>
-  )
-}
+  );
+};
 
 export default MNavBar;

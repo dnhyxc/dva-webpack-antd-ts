@@ -29,4 +29,4 @@ export const RoutesConfig = [
     path: '/app/result',
     component: () => import('@/routes/result'),
   },
-]
+];

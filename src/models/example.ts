@@ -33,7 +33,6 @@ const effects: Effects<GlobalState, IEffectsPayloads> = {
   },
 };
 
-
 const ExampleModel: Model<IExampleModelState, GlobalState, IReducersPayloads, IEffectsPayloads> = {
   namespace: 'example',
   state: {

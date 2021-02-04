@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
-import { Button, List, InputItem, Toast, ActivityIndicator } from 'antd-mobile';
+import {
+  Button, List, InputItem, Toast, ActivityIndicator,
+} from 'antd-mobile';
 import { connect } from 'dva';
 import { DispatchProp } from 'react-redux';
 import { createForm } from 'rc-form';
@@ -42,6 +44,7 @@ const Home: React.FC<IProps> = ({
     form.validateFields({ force: true }, (error: any) => {
       if (!error) {
         const select: any[] = [];
+        // eslint-disable-next-line guard-for-in
         for (const key in form.getFieldsValue()) {
           select.push({ [key]: form.getFieldsValue()[key] });
         }
@@ -59,18 +62,19 @@ const Home: React.FC<IProps> = ({
   return (
     <div className={styles.wrapper}>
       {
-        loading ?
+        loading ? (
           <ActivityIndicator
             size="large"
             className={styles.loading}
             text="Loading..."
             animating={loading}
-          /> :
+          />
+        ) :
           (
             <div className={styles.container}>
               <div className={styles.title}>
                 <MNavBar
-                  content='项目工时统计'
+                  content="项目工时统计"
                   onLeftClick={() => console.log('homeonLeftClick')}
                   rightContent={[<span key={1} onClick={onRecordClick}>提交记录</span>]}
                 />
@@ -100,13 +104,14 @@ const Home: React.FC<IProps> = ({
                             <InputItem
                               className={styles.item}
                               // autoAdjustHeight
+                              // eslint-disable-next-line react/jsx-props-no-spreading
                               {...getFieldProps(`${i.desc}`, {
                                 // initialValue: 'little ant',
                                 rules: [
                                   { required: true, message: '还有项目未填写' },
                                 ],
                               })}
-                              type='money'
+                              type="money"
                               placeholder="天"
                             >
                               {i.desc}
@@ -114,7 +119,7 @@ const Home: React.FC<IProps> = ({
                           </List>
                         </form>
                       </div>
-                    )
+                    );
                   })}
                 </div>
                 <div className={styles.footer}>
@@ -125,9 +130,9 @@ const Home: React.FC<IProps> = ({
             </div>
           )
       }
-    </div >
-  )
-}
+    </div>
+  );
+};
 
 export default connect((state: GlobalState) => ({
   loading: state.loading.models.home,

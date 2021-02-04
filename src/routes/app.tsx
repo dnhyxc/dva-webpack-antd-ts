@@ -6,7 +6,7 @@ const App: React.FC = ({ children }) => {
     <div className={styles.flexContent}>
       {children}
     </div>
-  )
-}
+  );
+};
 
 export default App;

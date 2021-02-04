@@ -1,10 +1,10 @@
 import React from 'react';
-import { Result, Icon, Button } from 'antd-mobile';
+import { Icon, Button } from 'antd-mobile';
 import MNavBar from '@/components/NavBar';
 import styles from './index.less';
 
 interface IProps {
-  history: any
+  history: any;
 }
 
 const SubmitResult: React.FC<IProps> = ({ history }) => {
@@ -14,25 +14,24 @@ const SubmitResult: React.FC<IProps> = ({ history }) => {
 
   const viewRecord = () => {
     history.push('/app/records/lisi1111');
-  }
+  };
 
   const goHome = () => {
     history.push('/app/home');
-  }
+  };
 
   return (
     <div className={styles.content}>
       <MNavBar
-        content='项目工时统计'
+        content="项目工时统计"
         onLeftClick={goHome}
         rightContent={[<span key={1} onClick={onRecordClick}>提交记录</span>]}
       />
       <div className={styles.subInfo}>
         <div className={styles.actionInfo}>
           <Icon type="check-circle" className={styles.icon} />
-          {/* <Icon type="cross-circle-o" className={styles.icon} style={{ fill: '#F13642' }} /> */}
           <span className={styles.textInfo}>提交成功</span>
-          <Button type='primary' className={styles.back}>退出</Button>
+          <Button type="primary" className={styles.back}>退出</Button>
           <Button className={styles.record} onClick={viewRecord}>查看提交记录</Button>
         </div>
         <div className={styles.footer}>
@@ -40,7 +39,7 @@ const SubmitResult: React.FC<IProps> = ({ history }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default SubmitResult;

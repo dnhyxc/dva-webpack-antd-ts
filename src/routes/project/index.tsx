@@ -6,7 +6,7 @@ import { GlobalState } from '@/models/types';
 import { projectActions } from '@/models/project';
 import styles from './index.less';
 
-const Item = List.Item;
+const { Item } = List;
 
 const data = [
   {
@@ -28,8 +28,8 @@ const data = [
   {
     id: 4,
     desc: '智能模板',
-  }
-]
+  },
+];
 
 interface IProps extends DispatchProp {
   history: any;
@@ -42,12 +42,12 @@ const Project: React.FC<IProps> = ({ history, dispatch }) => {
   useEffect(() => {
     dispatch(projectActions.reducers.updateSelectedProject({ selectedProject: [] }));
     const result = data.map(item => {
-      const newObj = Object.assign({}, item);
-      Object.defineProperty(newObj, 'checked', { value: false, writable: true })
+      const newObj = { ...item };
+      Object.defineProperty(newObj, 'checked', { value: false, writable: true });
       return newObj;
-    })
+    });
     setDataList(result);
-  }, []);
+  }, [dispatch]);
 
   const onSelect = (id?: number, desc?: string, checked?: boolean) => {
     const result = dataList.map((item: any) => {
@@ -55,9 +55,9 @@ const Project: React.FC<IProps> = ({ history, dispatch }) => {
         item.checked = !item.checked;
       }
       return item;
-    })
+    });
     setDataList(result);
-  }
+  };
 
   const onOk = (val: any) => {
     // console.log('完成了', val)
@@ -68,16 +68,15 @@ const Project: React.FC<IProps> = ({ history, dispatch }) => {
     setTimeout(() => {
       history.push('/app/home');
     }, 2000);
-  }
+  };
 
-  const onChange = (value: string) => {
-    setValue(value);
-  }
+  const onChange = (val: string) => {
+    setValue(val);
+  };
 
-  // const onSelect = (value: any) => {
-  //   selected.push(value);
-  //   setSelected([...selected]);
-  // }
+  const onSearchSubmit = (val: string) => {
+    console.log(val);
+  };
 
   return (
     <div className={styles.content}>
@@ -85,9 +84,9 @@ const Project: React.FC<IProps> = ({ history, dispatch }) => {
         <SearchBar
           className={styles.serachBar}
           value={value}
-          cancelText='完成'
-          placeholder='请输入搜索内容'
-          onSubmit={value => console.log(value, 'onSubmit')}
+          cancelText="完成"
+          placeholder="请输入搜索内容"
+          onSubmit={onSearchSubmit}
           onCancel={onOk as any}
           showCancelButton
           onChange={onChange}
@@ -100,17 +99,17 @@ const Project: React.FC<IProps> = ({ history, dispatch }) => {
               <Item
                 className={styles.item}
                 onClick={() => onSelect(item.id, item.desc, item.checked)}
-                extra={item.checked ? <Icon type='check' /> : null}
+                extra={item.checked ? <Icon type="check" /> : null}
               >
                 <div className={item.checked ? styles.listChecked : undefined}>{item.desc}</div>
               </Item>
             </List>
-          )
+          );
         })}
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default connect((state: GlobalState) => ({
   loading: state.loading.models.home,

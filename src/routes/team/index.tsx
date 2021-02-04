@@ -4,7 +4,7 @@ import { RouteComponentProps } from 'dva/router';
 import MNavBar from '../../components/NavBar';
 import styles from './index.less';
 
-const Item = List.Item;
+const { Item } = List;
 
 interface IProps extends RouteComponentProps {
   history: any;
@@ -23,19 +23,19 @@ const Demo: React.FC<IProps> = ({ history }) => {
 
   const toRecords = () => {
     history.push(`/app/home/${'张三'}`);
-  }
+  };
 
   // const onValueChange = () => {
   //   console.log('onValueChange');
   // };
 
-  const v1 = '已提交33'
-  const v2 = '未提交8'
+  const v1 = '已提交33';
+  const v2 = '未提交8';
 
   return (
     <div className={styles.wrapper}>
       <MNavBar
-        content='项目工时统计'
+        content="项目工时统计"
         onLeftClick={goBack}
       />
       <div className={styles.content}>
@@ -57,7 +57,7 @@ const Demo: React.FC<IProps> = ({ history }) => {
                       {i}
                     </Item>
                   </List>
-                )
+                );
               }) : ['111', '222', '333', '444', '555'].map(i => {
                 return (
                   <List key={i}>
@@ -65,14 +65,14 @@ const Demo: React.FC<IProps> = ({ history }) => {
                       {i}
                     </Item>
                   </List>
-                )
+                );
               })
             }
           </div>
         </div>
       </div>
-    </div >
-  )
-}
+    </div>
+  );
+};
 
 export default Demo;

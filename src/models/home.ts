@@ -22,7 +22,7 @@ interface IEffectsPayloads {
 const homeModel: Model<IhomeModelState, GlobalState, IReducersPayloads, IEffectsPayloads> = {
   namespace: 'home',
   state: {
-    userInfo: {}
+    userInfo: {},
   },
   reducers: {
     save(state, { payload }) {
