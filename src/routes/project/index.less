@@ -18,10 +18,6 @@
     }
   }
 
-  // :global(.am-list-line) {
-  //   border: 1px solid red;
-  // }
-
   .list {
     height: calc(100% - 69px);
     width: 100%;
@@ -33,11 +29,15 @@
     }
 
     .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       height: 60px;
+      font-size: 14px;
 
-      // .textInfo {
-      //   color: #108ee9;
-      // }
+      .listChecked {
+        color: #108ee9;
+      }
     }
   }
 }

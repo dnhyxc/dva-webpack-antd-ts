@@ -22,7 +22,7 @@ const Demo: React.FC<IProps> = ({ history }) => {
   };
 
   const toRecords = () => {
-    history.push(`/app/records/${'张三'}`);
+    history.push(`/app/home/${'张三'}`);
   }
 
   // const onValueChange = () => {

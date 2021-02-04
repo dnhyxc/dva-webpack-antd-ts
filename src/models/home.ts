@@ -1,55 +1,49 @@
-import { Model, createActionCreaters } from '@shuwen/dva-ts-wrapper';
+import {
+  Model, createActionCreaters,
+} from '@shuwen/dva-ts-wrapper';
 import * as Service from '@/services/home';
-// import { Toast } from 'antd-mobile';
-import { GlobalState } from './types';
+import { Result } from '@/utils/tool';
+import {
+  GlobalState,
+} from './types';
 
-export type IUserInfoState = Readonly<{
-  success?: boolean;
-  code?: string;
-  msg?: string;
-  requestId?: string;
-  userInfoData: any;
+export type IhomeModelState = Readonly<{
+  userInfo: Service.UserInfoResponse;
 }>
 
 interface IReducersPayloads {
-  save: Partial<IUserInfoState>;
+  save: void | Partial<IhomeModelState>;
 }
 
 interface IEffectsPayloads {
-
-  getUserInfo: {
-    // suffix: string;
-  };
+  getUserInfo: void;
 }
 
-const homeModel: Model<IUserInfoState, GlobalState, IReducersPayloads, IEffectsPayloads> = {
+const homeModel: Model<IhomeModelState, GlobalState, IReducersPayloads, IEffectsPayloads> = {
   namespace: 'home',
   state: {
-    success: false,
-    code: '',
-    msg: '',
-    requestId: '',
-    userInfoData: {},
+    userInfo: {}
   },
   reducers: {
     save(state, { payload }) {
       return { ...state, ...payload };
-    }
+    },
   },
   effects: {
-    *getUserInfo({ payload, onResult }, { call, put }) {
-      const res = yield call(Service.getUserInfo, {});
-      console.log(res);
-      if (res && res.success) {
-        onResult && onResult(null, res);
+    *getUserInfo({ payload }, { call, put }) {
+      const res: Result<Service.UserInfoResponse> = yield call(Service.getUserInfo);
+      if (res.success) {
+        yield put({
+          type: 'save',
+          payload: {
+            userInfo: res.data || {},
+          },
+        });
       }
-      // else {
-      //   Toast.info(res);
-      // }
-    }
+    },
   },
 };
 
 export default homeModel;
 
-export const homeAction = createActionCreaters(homeModel);
+export const homeActions = createActionCreaters(homeModel);

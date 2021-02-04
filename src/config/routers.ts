@@ -2,7 +2,7 @@ export const RoutesConfig = [
   {
     title: '首页',
     key: 'home',
-    path: '/app/home',
+    path: '/app/home/:id?',
     component: () => import('@/routes/home'),
   },
   {
@@ -20,7 +20,7 @@ export const RoutesConfig = [
   {
     title: '提交记录',
     key: 'records',
-    path: '/app/records/:name',
+    path: '/app/records/:name?',
     component: () => import('@/routes/records'),
   },
   {

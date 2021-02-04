@@ -1,4 +1,5 @@
-import { IUserInfoState } from './home';
+import { IhomeModelState } from './home';
+import { IProjectModelState } from './project';
 
 export type Loading = Readonly<{
   global: boolean;
@@ -24,8 +25,8 @@ export type IRouterState = Readonly<{
 export type GlobalState = Readonly<{
   router: IRouterState;
   loading: Loading;
-  // base: IBaseState;
-  home: IUserInfoState;
+  home: IhomeModelState;
+  project: IProjectModelState;
 }>;
 
 export interface Data {

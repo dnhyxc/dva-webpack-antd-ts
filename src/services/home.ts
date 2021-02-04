@@ -1,22 +1,19 @@
-import request from '../utils/request';
+import { post } from '@/utils/request';
+import { normalizeResult } from '@/utils/tool';
 
-export function query() {
-  return request('/api/users');
+export interface UserInfoResponse {
+  attributes?: null,
+  authStr?: string,
+  avatarUrl?: string,
+  dingtalkUserId?: string,
+  email?: string,
+  id?: string,
+  trueName?: string,
+  type?: number,
+  userName?: string,
 }
 
-
-
-export interface BrowseInfo {
-
-}
-
-export async function getUserInfo(param: any) {
-  const res = request('/api/user/currentUserInfo', {
-    method: 'post',
-    headers: {
-      'Content-Type': 'application/json; charset=utf-8',
-    },
-    body: JSON.stringify(param),
-  });
-  return res;
+export async function getUserInfo() {
+  const res = await post('/api/user/currentUserInfo');
+  return normalizeResult<UserInfoResponse>(res);
 }

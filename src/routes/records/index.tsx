@@ -17,7 +17,7 @@ const Records: React.FC<IProps> = ({ match, history }) => {
   console.log(userName);
 
   const goBack = () => {
-    history.push('/app/team');
+    history.push('/app/home');
   };
 
   return (
@@ -30,7 +30,7 @@ const Records: React.FC<IProps> = ({ match, history }) => {
       </div>
       <div className={styles.list}>
         {
-          [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12].map(i => {
+          ['2021 年 07 月', '2021 年 06 月', '2021 年 05 月', '2021 年 04 月', '2021 年 03 月', '2021 年 02 月', '2021 年 01 月'].map(i => {
             return (
               <List key={i} >
                 <Item arrow="horizontal" multipleLine onClick={() => { }} className={styles.item}>

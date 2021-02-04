@@ -30,7 +30,6 @@
     }
   },
   "rules": {
-    "no-duplicate-imports": 0,
     "linebreak-style": [
       0,
       "erron",
