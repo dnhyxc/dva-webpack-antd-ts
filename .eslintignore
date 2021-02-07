@@ -9,3 +9,4 @@ spm_modules
 test/fixtures
 src/components/VideoClipper
 *.config.js
+!.eslintrc.js

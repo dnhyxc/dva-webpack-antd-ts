@@ -48,7 +48,6 @@ const Home: React.FC<IProps> = ({
         for (const key in form.getFieldsValue()) {
           select.push({ [key]: form.getFieldsValue()[key] });
         }
-        console.log(select, '-------------------------------');
         // 发送请求，拿到结果之后跳转
         setTimeout(() => {
           history.push('/app/result');

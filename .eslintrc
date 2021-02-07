@@ -582,15 +582,15 @@
         "@typescript-eslint/no-useless-constructor": [
           "error"
         ],
-        // "@typescript-eslint/camelcase": [
-        //   "error",
-        //   {
-        //     "properties": "never",
-        //     "allow": [
-        //       "^UNSAFE_"
-        //     ]
-        //   }
-        // ],
+        "@typescript-eslint/camelcase": [
+          "error",
+          {
+            "properties": "never",
+            "allow": [
+              "^UNSAFE_"
+            ]
+          }
+        ],
         "@typescript-eslint/indent": [
           "error",
           2
